@@ -637,14 +637,14 @@ type InvoiceUpcomingParams struct {
 }
 
 // AppendTo implements custom encoding logic for InvoiceUpcomingParams.
-func (i *InvoiceUpcomingParams) AppendTo(body *form.Values, keyParts []string) {
-	if BoolValue(i.SubscriptionBillingCycleAnchorNow) {
+func (p *InvoiceUpcomingParams) AppendTo(body *form.Values, keyParts []string) {
+	if BoolValue(p.SubscriptionBillingCycleAnchorNow) {
 		body.Add(form.FormatKey(append(keyParts, "subscription_billing_cycle_anchor")), "now")
 	}
-	if BoolValue(i.SubscriptionBillingCycleAnchorUnchanged) {
+	if BoolValue(p.SubscriptionBillingCycleAnchorUnchanged) {
 		body.Add(form.FormatKey(append(keyParts, "subscription_billing_cycle_anchor")), "unchanged")
 	}
-	if BoolValue(i.SubscriptionTrialEndNow) {
+	if BoolValue(p.SubscriptionTrialEndNow) {
 		body.Add(form.FormatKey(append(keyParts, "subscription_trial_end")), "now")
 	}
 }
@@ -916,14 +916,14 @@ type InvoiceUpcomingLinesParams struct {
 }
 
 // AppendTo implements custom encoding logic for InvoiceUpcomingLinesParams.
-func (i *InvoiceUpcomingLinesParams) AppendTo(body *form.Values, keyParts []string) {
-	if BoolValue(i.SubscriptionBillingCycleAnchorNow) {
+func (p *InvoiceUpcomingLinesParams) AppendTo(body *form.Values, keyParts []string) {
+	if BoolValue(p.SubscriptionBillingCycleAnchorNow) {
 		body.Add(form.FormatKey(append(keyParts, "subscription_billing_cycle_anchor")), "now")
 	}
-	if BoolValue(i.SubscriptionBillingCycleAnchorUnchanged) {
+	if BoolValue(p.SubscriptionBillingCycleAnchorUnchanged) {
 		body.Add(form.FormatKey(append(keyParts, "subscription_billing_cycle_anchor")), "unchanged")
 	}
-	if BoolValue(i.SubscriptionTrialEndNow) {
+	if BoolValue(p.SubscriptionTrialEndNow) {
 		body.Add(form.FormatKey(append(keyParts, "subscription_trial_end")), "now")
 	}
 }

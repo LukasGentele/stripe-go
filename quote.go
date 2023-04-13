@@ -174,8 +174,8 @@ type QuoteSubscriptionDataParams struct {
 }
 
 // AppendTo implements custom encoding logic for QuoteSubscriptionDataParams.
-func (q *QuoteSubscriptionDataParams) AppendTo(body *form.Values, keyParts []string) {
-	if BoolValue(q.EffectiveDateCurrentPeriodEnd) {
+func (p *QuoteSubscriptionDataParams) AppendTo(body *form.Values, keyParts []string) {
+	if BoolValue(p.EffectiveDateCurrentPeriodEnd) {
 		body.Add(form.FormatKey(append(keyParts, "effective_date")), "current_period_end")
 	}
 }

@@ -544,14 +544,14 @@ func (p *SubscriptionParams) AddMetadata(key string, value string) {
 }
 
 // AppendTo implements custom encoding logic for SubscriptionParams.
-func (s *SubscriptionParams) AppendTo(body *form.Values, keyParts []string) {
-	if BoolValue(s.BillingCycleAnchorNow) {
+func (p *SubscriptionParams) AppendTo(body *form.Values, keyParts []string) {
+	if BoolValue(p.BillingCycleAnchorNow) {
 		body.Add(form.FormatKey(append(keyParts, "billing_cycle_anchor")), "now")
 	}
-	if BoolValue(s.BillingCycleAnchorUnchanged) {
+	if BoolValue(p.BillingCycleAnchorUnchanged) {
 		body.Add(form.FormatKey(append(keyParts, "billing_cycle_anchor")), "unchanged")
 	}
-	if BoolValue(s.TrialEndNow) {
+	if BoolValue(p.TrialEndNow) {
 		body.Add(form.FormatKey(append(keyParts, "trial_end")), "now")
 	}
 }

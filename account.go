@@ -728,8 +728,8 @@ type AccountSettingsPayoutsScheduleParams struct {
 }
 
 // AppendTo implements custom encoding logic for AccountSettingsPayoutsScheduleParams.
-func (a *AccountSettingsPayoutsScheduleParams) AppendTo(body *form.Values, keyParts []string) {
-	if BoolValue(a.DelayDaysMinimum) {
+func (p *AccountSettingsPayoutsScheduleParams) AppendTo(body *form.Values, keyParts []string) {
+	if BoolValue(p.DelayDaysMinimum) {
 		body.Add(form.FormatKey(append(keyParts, "delay_days")), "minimum")
 	}
 }

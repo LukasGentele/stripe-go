@@ -30,8 +30,8 @@ func (p *FileLinkParams) AddMetadata(key string, value string) {
 }
 
 // AppendTo implements custom encoding logic for FileLinkParams.
-func (f *FileLinkParams) AppendTo(body *form.Values, keyParts []string) {
-	if BoolValue(f.ExpiresAtNow) {
+func (p *FileLinkParams) AppendTo(body *form.Values, keyParts []string) {
+	if BoolValue(p.ExpiresAtNow) {
 		body.Add(form.FormatKey(append(keyParts, "expires_at")), "now")
 	}
 }

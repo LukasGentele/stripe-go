@@ -230,14 +230,14 @@ func (p *SubscriptionSchedulePhaseParams) AddMetadata(key string, value string) 
 }
 
 // AppendTo implements custom encoding logic for SubscriptionSchedulePhaseParams.
-func (s *SubscriptionSchedulePhaseParams) AppendTo(body *form.Values, keyParts []string) {
-	if BoolValue(s.EndDateNow) {
+func (p *SubscriptionSchedulePhaseParams) AppendTo(body *form.Values, keyParts []string) {
+	if BoolValue(p.EndDateNow) {
 		body.Add(form.FormatKey(append(keyParts, "end_date")), "now")
 	}
-	if BoolValue(s.TrialEndNow) {
+	if BoolValue(p.TrialEndNow) {
 		body.Add(form.FormatKey(append(keyParts, "trial_end")), "now")
 	}
-	if BoolValue(s.StartDateNow) {
+	if BoolValue(p.StartDateNow) {
 		body.Add(form.FormatKey(append(keyParts, "start_date")), "now")
 	}
 }
@@ -274,8 +274,8 @@ func (p *SubscriptionScheduleParams) AddMetadata(key string, value string) {
 }
 
 // AppendTo implements custom encoding logic for SubscriptionScheduleParams.
-func (s *SubscriptionScheduleParams) AppendTo(body *form.Values, keyParts []string) {
-	if BoolValue(s.StartDateNow) {
+func (p *SubscriptionScheduleParams) AppendTo(body *form.Values, keyParts []string) {
+	if BoolValue(p.StartDateNow) {
 		body.Add(form.FormatKey(append(keyParts, "start_date")), "now")
 	}
 }
