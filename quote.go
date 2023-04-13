@@ -83,6 +83,8 @@ type QuoteParams struct {
 	InvoiceSettings *QuoteInvoiceSettingsParams `form:"invoice_settings"`
 	// A list of line items the customer is being quoted for. Each line item includes information about the product, the quantity, and the resulting cost.
 	LineItems []*QuoteLineItemParams `form:"line_items"`
+	// Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`.
+	Metadata map[string]string `form:"metadata"`
 	// The account on behalf of which to charge.
 	OnBehalfOf *string `form:"on_behalf_of"`
 	// When creating a subscription or subscription schedule, the specified configuration data will be used. There must be at least one line item with a recurring price for a subscription or subscription schedule to be created. A subscription schedule is created if `subscription_data[effective_date]` is present and in the future, otherwise a subscription is created.
@@ -91,6 +93,15 @@ type QuoteParams struct {
 	TestClock *string `form:"test_clock"`
 	// The data with which to automatically create a Transfer for each of the invoices.
 	TransferData *QuoteTransferDataParams `form:"transfer_data"`
+}
+
+// AddMetadata adds a new key-value pair to the Metadata.
+func (p *QuoteParams) AddMetadata(key string, value string) {
+	if p.Metadata == nil {
+		p.Metadata = make(map[string]string)
+	}
+
+	p.Metadata[key] = value
 }
 
 // Settings for automatic tax lookup for this quote and resulting invoices and subscriptions.

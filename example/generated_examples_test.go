@@ -2918,11 +2918,3 @@ func TestPaymentIntentCreate3(t *testing.T) {
 	result, _ := paymentintent.New(params)
 	assert.NotNil(t, result)
 }
-
-func TestTokenCreate7(t *testing.T) {
-	params := &stripe.TokenParams{
-		Card: &stripe.CardParams{Number: stripe.String("4242424242424242")},
-	}
-	result, _ := token.New(params)
-	assert.NotNil(t, result)
-}
